@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="tH3QtPESITv4nf-r_HtU" name="ページ1">
-        <mxGraphModel dx="728" dy="680" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="669" dy="546" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -15,19 +15,19 @@
                 <mxCell id="4" value="descriptiion（text型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="46" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="category（integer型, NOT NULL）" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fillColor=#f5f5f5;fontColor=#333333;" parent="2" vertex="1">
+                <mxCell id="5" value="category_id（integer型, NOT NULL）" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fillColor=#f5f5f5;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="66" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="condition（integer型, NOT NULL）" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fillColor=#f5f5f5;fontColor=#333333;" parent="2" vertex="1">
+                <mxCell id="18" value="condition_id（integer型, NOT NULL）" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fillColor=#f5f5f5;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="86" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="shipping_charge（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
+                <mxCell id="19" value="shipping_charge_id（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="106" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="shipment_area（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
+                <mxCell id="20" value="prefecture_id（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="126" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="days_to_ship（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
+                <mxCell id="21" value="days_to_ship_id（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
                     <mxGeometry y="146" width="280" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="price（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="2" vertex="1">
@@ -90,7 +90,7 @@
                 <mxCell id="49" value="postal_cord（string型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="48" vertex="1">
                     <mxGeometry y="26" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" value="prefecture（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="48" vertex="1">
+                <mxCell id="50" value="prefecture_id（integer型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="48" vertex="1">
                     <mxGeometry y="46" width="280" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="city（string型, NOT NULL）" style="text;fillColor=#f5f5f5;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontColor=#333333;" parent="48" vertex="1">
