@@ -9,10 +9,9 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :item_id, :user_id, :city, :house_number
     validates :phone_number,
-              length: { in: 10..11, message: 'is too short', allow_blank: true },
+              length: { in: 10..11, allow_blank: true },
               numericality: { only_integer: true, allow_blank: true }
   end
-  
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)

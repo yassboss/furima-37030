@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @order_address = OrderAddress.new
     @item = Item.find(params[:item_id])
@@ -19,6 +18,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(item_id: @item.id, user_id: current_user.id)
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(
+      item_id: @item.id, user_id: current_user.id
+    )
   end
 end
