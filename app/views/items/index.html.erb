@@ -128,35 +128,31 @@
     </div>
     <ul class='item-lists'>
       <% if @items.exists? %>
-      <% @items.each do |item|%>
-        <li class='list'>
-          <%= link_to item_path(item.id) do %>
-          <div class='item-img-content'>
-            <%= image_tag item.image, class: "item-img" if item.image.attached? %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <% unless @items.exists? %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          <% end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
-          </div>
-          <div class='item-info'>
-            <h3 class='item-name'>
-              <%= item.item_name %>
-            </h3>
-            <div class='item-price'>
-              <span><%= item.price %>円<br><%= item.shipping_charge.name %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+        <% @items.each do |item|%>
+          <li class='list'>
+            <%= link_to item_path(item.id) do %>
+            <div class='item-img-content'>
+              <%= image_tag item.image, class: "item-img" if item.image.attached? %>
+              <% if Order.find_by(item_id: item.id) %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+              <% end %>
+            </div>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= item.item_name %>
+              </h3>
+              <div class='item-price'>
+                <span><%= item.price %>円<br><%= item.shipping_charge.name %></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
               </div>
             </div>
-          </div>
-          <% end %>
-        </li>
+            <% end %>
+          </li>
         <% end %>
       <% else %>
         <li class='list'>
@@ -177,7 +173,6 @@
           <% end %>
         </li>
       <% end %>
-      </li>
     </ul>
   </div>
   <%# /商品一覧 %>
