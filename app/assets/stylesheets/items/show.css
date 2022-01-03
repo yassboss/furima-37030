@@ -142,7 +142,7 @@
 /* /商品の概要 */
 
 .comment-box {
-  width: 40vw;
+  width: 45vw;
   background-color: #fff;
   margin: 5vh 0;
   text-align: center;
@@ -163,6 +163,48 @@
   text-align: left;
 }
 
+.comments {
+  width: 45vw;
+  margin: 5vh 0;
+}
+
+.comments h4 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.comment {
+  margin-top: 20px;
+}
+
+.comment-frame {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  resize: none;
+  position: relative;
+}
+
+.created {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #838080;
+}
+
+.comment p {
+  text-align: left;
+}
+
+.fa-trash-alt {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  color: #838080;
+  font-size: 14px;
+}
+
 .comment-btn {
   line-height: 48px;
   background-color: #3CCACE;
@@ -173,6 +215,7 @@
   font-size: 18px;
   border-radius: 100px;
   margin-bottom: 2vh;
+  cursor: pointer;
 }
 
 .comment-flag {
