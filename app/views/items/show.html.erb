@@ -87,6 +87,11 @@
           <div class="comment-frame">
             <p><%= comment.text %></p>
             <p class="created"><%= l comment.created_at %></p>
+            <% if user_signed_in? && current_user.id == @item.user_id %>
+              <%= link_to item_comment_path(comment.id),id: "comment-destroy", method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>

@@ -28,8 +28,22 @@ if(location.pathname.match(/\/items\/\d/)){
         var s = year + "/" + mon + "/" + day + " " + hour + ":" + min + ":" + sec; 
         return s;
       }
-      
-      const html = `
+
+      let html;
+      if (data.user.id === data.item.user_id) {
+        html = `
+        <div class="comment">
+          <p>${data.user.nickname}</p>
+          <div class="comment-frame">
+            <p>${data.comment.text}</p>
+            <p class="created">${getTime(data.comment.created_at)}</p>
+              <a id="comment-destroy" data-method="delete" href="/items/${data.comment.id}/comments/${data.comment.item_id}">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+          </div>
+        </div>`
+      } else {
+        html = `
         <div class="comment">
           <p>${data.user.nickname}</p>
           <div class="comment-frame">
@@ -37,6 +51,7 @@ if(location.pathname.match(/\/items\/\d/)){
             <p class="created">${getTime(data.comment.created_at)}</p>
           </div>
         </div>`
+      }
       const comments = document.getElementById("comments")
       comments.insertAdjacentHTML('beforeend', html)
       const commentForm = document.getElementById("comment-form")
