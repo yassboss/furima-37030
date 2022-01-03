@@ -163,6 +163,38 @@
   text-align: left;
 }
 
+.comments {
+  width: 40vw;
+  margin: 5vh 0;
+  text-align: center;
+}
+
+.comments h4 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.comment {
+  margin-top: 20px;
+}
+
+.comment-frame {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  resize: none;
+}
+
+.created {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.comment p {
+  text-align: left;
+}
+
 .comment-btn {
   line-height: 48px;
   background-color: #3CCACE;
@@ -173,6 +205,7 @@
   font-size: 18px;
   border-radius: 100px;
   margin-bottom: 2vh;
+  cursor: pointer;
 }
 
 .comment-flag {
