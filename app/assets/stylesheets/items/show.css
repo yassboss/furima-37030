@@ -218,6 +218,11 @@
   cursor: pointer;
 }
 
+#comment-destroy-btn:hover {
+  color: #3f3e3e;
+  font-size: 16px;
+}
+
 .comment-flag {
   display: flex;
   justify-content: center;
