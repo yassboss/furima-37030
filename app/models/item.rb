@@ -10,6 +10,27 @@ class Item < ApplicationRecord
   has_many :comments
   has_many :Notifications, dependent: :destroy
 
+  def create_notification_comment!(current_user, comment_id)
+    temp_ids = Comment.select(:user_id).where(item_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_comment!(current_user, comment_id, temp_id['user_id'])
+    end
+    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+  end
+
+  def save_notification_comment!(current_user, comment_id, visited_id)
+    notification = current_user.active_notifications.new(
+      item_id: id,
+      comment_id: comment_id,
+      visited_id: visited_id,
+      action: 'comment'
+    )
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
+
   VALID_PRICE_REGEX = /\A[0-9]+\z/
 
   with_options presence: true do
@@ -22,4 +43,5 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id,
             numericality: { other_than: 1, message: "can't be blank" }
+
 end
