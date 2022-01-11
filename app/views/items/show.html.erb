@@ -86,7 +86,7 @@
           <p><%= comment.user.nickname %></p>
           <div class="comment-frame">
             <p><%= comment.text %></p>
-            <p class="created"><%= l comment.created_at %></p>
+            <p class="created"><%= time_ago_in_words(comment.created_at) %>前　<%= l comment.created_at %></p>
             <% if user_signed_in? && current_user.id == @item.user_id %>
               <%= link_to item_comment_path(comment.id),id: "comment-destroy", method: :delete do %>
                 <i class="fas fa-trash-alt", id="comment-destroy-btn"></i>

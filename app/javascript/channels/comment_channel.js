@@ -24,10 +24,9 @@ if(location.pathname.match(/\/items\/\d/)){
         var day = ("0"+time.getDate()).slice(-2);
         var hour = ("0"+time.getHours()).slice(-2);
         var min = ("0"+time.getMinutes()).slice(-2);
-        var sec = ("0"+time.getSeconds()).slice(-2);
         var week = time.getDay();
-      
-        var s = year + "年" + mon + "月" + day + "日" + "(" + wday[week] + ") " + hour + "時" + min + "分" + sec + "秒"; 
+
+        var s = "今　" +year + "年" + mon + "月" + day + "日" + "(" + wday[week] + ") " + hour + "時" + min + "分"; 
         return s;
       }
 
