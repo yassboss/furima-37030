@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments
+  has_many :Notifications, dependent: :destroy
 
   VALID_PRICE_REGEX = /\A[0-9]+\z/
 
