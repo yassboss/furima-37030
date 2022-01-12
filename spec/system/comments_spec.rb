@@ -20,9 +20,9 @@ RSpec.describe 'コメント投稿', type: :system do
       # フォームに情報を入力する
       fill_in 'comment_text', with: @comment.text
       # 送信するとCommentモデルのカウントが1上がることを確認する
-      expect {
+      expect do
         find('button[name="button"]').click
-      }.to change { Comment.count }.by(1)
+      end.to change { Comment.count }.by(1)
       # 入力したコメントが表示されていることを確認する
       expect(page).to have_content(@comment.text)
     end

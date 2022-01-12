@@ -15,9 +15,7 @@ class Item < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    if temp_ids.blank? && temp_ids.exclude?(id)
-      save_notification_comment!(current_user, comment_id, user_id)
-    end
+    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank? && temp_ids.exclude?(id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
@@ -27,9 +25,7 @@ class Item < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
 
@@ -45,5 +41,4 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :prefecture_id, :shipping_charge_id, :days_to_ship_id,
             numericality: { other_than: 1, message: "can't be blank" }
-
 end
