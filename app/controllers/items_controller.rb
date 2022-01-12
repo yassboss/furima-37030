@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     if user_signed_in?
       @notifications = current_user.passive_notifications
-      @notifications.where(checked: false).each do |notification|
+      @notifications.where(item_id: @item.id).where(checked: false).each do |notification|
         notification.update_attributes(checked: true)
       end
     end
