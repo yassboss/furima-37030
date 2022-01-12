@@ -17,6 +17,8 @@
 - has_many :items
 - has_many :orders
 - has_many :comments
+- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id'
+- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
 
 ## items テーブル
 
@@ -37,6 +39,7 @@
 - has_one :order
 - has_many :comments
 - has_many_attached :images
+- has_many :notifications
 
 ## orders テーブル
 
@@ -76,3 +79,22 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+- has_many :notifications
+
+## notifications テーブル
+
+| Column       | Type       | Options                     |
+| ------------ | ---------- | ----------------------------|
+| visitor_id   | integer    | null: false                 |
+| visited_id   | integer    | null: false                 |
+| item_id      | integer    |                             |
+| comment_id   | integer    |                             |
+| action       | string     | default: '', null: false    |
+| checked      | boolean    | default: false, null: false |
+
+### Association
+- belongs_to :item
+- belongs_to :comment
+
+- belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id'
+- belongs_to :visited, class_name: 'User', foreign_key: 'visited_id'

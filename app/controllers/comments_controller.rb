@@ -4,8 +4,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @item = Item.find(params[:item_id])
-    CommentChannel.broadcast_to @item, { comment: @comment, user: @comment.user, item: @item } if @comment.save
+    @item = @comment.item
+    if @comment.save
+      CommentChannel.broadcast_to @item, { comment: @comment, user: @comment.user, item: @item } if @comment.save
+      @item.create_notification_comment!(current_user, @comment.id)
+    end
   end
 
   def destroy

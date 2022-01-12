@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :create]
     resources :comments, only: [:create, :destroy]
   end
+  resources :notifications, only: :index
 end

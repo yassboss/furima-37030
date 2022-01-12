@@ -31,7 +31,7 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号が空では登録できない' do
         @order_address.postal_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal codeを入力してください")
+        expect(@order_address.errors.full_messages).to include('Postal codeを入力してください')
       end
       it '郵便番号が「3桁ハイフン4桁」の半角文字列でなければ登録できない' do
         @order_address.postal_code = '1234567'
@@ -46,17 +46,17 @@ RSpec.describe OrderAddress, type: :model do
       it '市区町村が空では登録できない' do
         @order_address.city = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Cityを入力してください")
+        expect(@order_address.errors.full_messages).to include('Cityを入力してください')
       end
       it '番地が空では登録できない' do
         @order_address.house_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("House numberを入力してください")
+        expect(@order_address.errors.full_messages).to include('House numberを入力してください')
       end
       it '電話番号が空では登録できない' do
         @order_address.phone_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone numberを入力してください")
+        expect(@order_address.errors.full_messages).to include('Phone numberを入力してください')
       end
       it '電話番号が10桁未満では登録できない' do
         @order_address.phone_number = '123456789'
@@ -76,17 +76,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'itemが紐づいていないと保存できない' do
         @order_address.item_id = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Itemを入力してください")
+        expect(@order_address.errors.full_messages).to include('Itemを入力してください')
       end
       it 'userが紐づいていないと保存できない' do
         @order_address.user_id = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Userを入力してください")
+        expect(@order_address.errors.full_messages).to include('Userを入力してください')
       end
       it 'tokenが空では登録できないこと' do
         @order_address.token = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tokenを入力してください")
+        expect(@order_address.errors.full_messages).to include('Tokenを入力してください')
       end
     end
   end

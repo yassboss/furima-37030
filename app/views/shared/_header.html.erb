@@ -17,11 +17,30 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+        <li style="position: relative;"><a class="logout" id="comment-letter">コメント</a>
+          <% if @notifications.where(checked: false).exists? %>
+            <i class="fas fa-bell fa-fw fa-lg" style="font-size: 18px; color: gold; position: absolute; top: -3px; right: 3px;"></i>
+          <% end %>
+        </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
       <% end %>
     </ul>
+    <% if user_signed_in? %>
+      <div class="notice-lists hidden" id="notice-lists">
+        <p class="notice-index">通 知</p>
+        <div class="notice-list">
+          <% notifications = @notifications.where(checked: false) %>
+          <% if notifications.exists? %>
+            <%= render notifications %>
+          <% else %>
+            <p>通知はありません</p>
+          <% end %>
+          <%= link_to 'コメントを全て表示', notifications_path %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </header>
