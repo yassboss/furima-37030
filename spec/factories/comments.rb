@@ -6,7 +6,7 @@ FactoryBot.define do
 
     trait :a do
       association :item
-      user     { item.user }
+      user { item.user }
     end
 
     trait :b do

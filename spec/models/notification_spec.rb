@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
   before do
-    @item = FactoryBot.build(:item, :a) 
+    @item = FactoryBot.build(:item, :a)
     @comment = FactoryBot.build(:comment, :a)
   end
 

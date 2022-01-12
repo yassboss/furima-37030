@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Notifications', type: :request do
   before do
     @user = FactoryBot.create(:user)
-    @item = FactoryBot.create(:item, :a) 
+    @item = FactoryBot.create(:item, :a)
     @comment = FactoryBot.create(:comment, user_id: @user.id, item_id: @item.id)
-    @notification = FactoryBot.create(:notification, visitor_id: @comment.user_id, visited_id: @item.user_id, item_id: @item.id, comment_id: @comment.id)
+    @notification = FactoryBot.create(:notification, visitor_id: @comment.user_id, visited_id: @item.user_id, item_id: @item.id,
+                                                     comment_id: @comment.id)
   end
 
   describe 'GET #index' do
