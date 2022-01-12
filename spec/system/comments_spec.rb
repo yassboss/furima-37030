@@ -4,7 +4,8 @@ RSpec.describe 'コメント投稿', type: :system do
   before do
     @user = FactoryBot.create(:user, :a)
     @item = FactoryBot.create(:item, :b)
-    @comment = FactoryBot.create(:comment)
+    @item_a = FactoryBot.create(:item, :a)
+    @comment = FactoryBot.build(:comment)
   end
   context 'コメントができるとき' do
     it 'ログインしたユーザーはコメントできる' do
@@ -14,15 +15,15 @@ RSpec.describe 'コメント投稿', type: :system do
       fill_in 'password', with: @user.password
       find('input[name="commit"]').click
       # 商品詳細ページに遷移する
-      visit item_path(@item)
+      visit item_path(@item_a)
       # コメントフォームが表示されていることを確認する
       expect(page).to have_content('コメントする')
       # フォームに情報を入力する
       fill_in 'comment_text', with: @comment.text
-      # 送信するとCommentモデルのカウントが1上がることを確認する
+      # 送信するとCommentモデルとNotificationモデルのカウントが1上がることを確認する
       expect do
         find('button[name="button"]').click
-      end.to change { Comment.count }.by(1)
+      end.to change { Comment.count }.by(1), change { Notification.count }.by(1)
       # 入力したコメントが表示されていることを確認する
       expect(page).to have_content(@comment.text)
     end
