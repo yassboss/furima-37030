@@ -1,21 +1,26 @@
-window.addEventListener('load', function(){
-
+document.addEventListener('DOMContentLoaded', function(){
   const commentLetter = document.getElementById("comment-letter");
-  const noticeLists = document.getElementById("notice-lists");
-  
-  commentLetter.addEventListener('mouseover', function(){
-    this.setAttribute("style", "font-weight: bold;");
-  })
+  if (!commentLetter) return null;
 
-  commentLetter.addEventListener('mouseout', function(){
-    this.removeAttribute("style", "font-weight: bold;");
-  })
+  window.addEventListener('load', function(){
 
-  commentLetter.addEventListener('click', function(){
-    if (noticeLists.getAttribute("style") == "display: block;") {
-      noticeLists.removeAttribute("style", "display: block;")
-    } else {
-      noticeLists.setAttribute("style", "display: block;")
-    }
-  })
-})
+    const commentLetter = document.getElementById("comment-letter");
+    const noticeLists = document.getElementById("notice-lists");
+    
+    commentLetter.addEventListener('mouseover', function(){
+      this.setAttribute("style", "font-weight: bold;");
+    })
+
+    commentLetter.addEventListener('mouseout', function(){
+      this.removeAttribute("style", "font-weight: bold;");
+    })
+
+    commentLetter.addEventListener('click', function(){
+      if (noticeLists.getAttribute("style") == "display: block;") {
+        noticeLists.removeAttribute("style", "display: block;")
+      } else {
+        noticeLists.setAttribute("style", "display: block;")
+      }
+    })
+  });
+});
