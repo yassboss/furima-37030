@@ -74,7 +74,6 @@
 
 /* 商品画像 */
 .img-upload {
-  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 2vh 0;
@@ -228,9 +227,17 @@
   font-size: 13px;
 }
 
-img {
-  height: 120px;
-  width: 120px;
+.preview-image {
+  width: 100%;
   /* 縦横比を保ったまま、画像を縦横100pxのサイズに収めるプロパティです */
   object-fit: contain;
+}
+
+.image-delete-button {
+  margin: 0 auto;
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  width: 50%;
 }
