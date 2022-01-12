@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:item_name, :description, :category_id, :condition_id, :shipping_charge_id,
-                                 :prefecture_id, :days_to_ship_id, :price, {images: []}).merge(user_id: current_user.id)
+                                 :prefecture_id, :days_to_ship_id, :price, { images: [] }).merge(user_id: current_user.id)
   end
 
   def move_to_root_path

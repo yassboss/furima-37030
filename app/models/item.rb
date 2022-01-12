@@ -33,7 +33,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :item_name, :description
-    validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }, allow_blank: true
+    validates :images, length: { minimum: 1, maximum: 5, message: 'は1枚以上5枚以下にしてください' }, allow_blank: true
     validates :price,
               numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true,
                               allow_blank: true },
