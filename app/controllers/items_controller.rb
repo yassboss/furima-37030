@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    @notifications = current_user.passive_notifications.page(params[:page]).per(10) if user_signed_in?
   end
 
   def new
@@ -24,6 +25,12 @@ class ItemsController < ApplicationController
     @order = Order.find_by(item_id: @item.id)
     @comments = @item.comments.includes(:user)
     @comment = Comment.new
+    if user_signed_in?
+      @notifications = current_user.passive_notifications
+      @notifications.where(checked: false).each do |notification|
+        notification.update_attributes(checked: true)
+      end
+    end
   end
 
   def edit

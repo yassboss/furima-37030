@@ -1,0 +1,32 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="notice-box" style="color: gray;">
+  <% if current_page?(notifications_path) %>
+    <P style="font-size: 12px; margin-bottom: 10px;">
+      <%= l notification.created_at %>
+    </p>
+  <% end %>
+  <p class="notice-content" style="margin: 0 10px 10px 10px;">
+    <span class="visitor-name" style="font-weight: bold; color: #3ccace;">
+      <%= visitor.nickname %>
+    </span>さんが
+    <span class="visited-item" style="font-weight: bold; color: #3ccace;">
+      <% if notification.item.user_id == visited.id %>
+        <%= link_to "あなたの#{notification.item.item_name}", notification.item %>
+      <% else %>
+        <%= link_to item_path(notification.item) do %>
+          <%= notification.item.user.nickname %>さんの<%= notification.item.item_name %>
+        <% end %>
+      <% end %>
+    </span>にコメントしました
+  </p>
+  <p class="item-comment" style="margin: 0 10px;">
+    <% comment = Comment.find_by(id: notification.comment_id) %>
+    <%= comment.text %>
+  </p>
+  <p class="time-ago" style="text-align: right; font-size: 12px;">
+    <%= time_ago_in_words(notification.created_at).upcase %>前
+  </p>
+  <hr>
+</div>

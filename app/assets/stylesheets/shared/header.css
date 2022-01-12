@@ -52,12 +52,12 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 1vh 0;
+  position: relative;
 }
 
 .lists-left {
   display: flex;
   min-width: 200px;
-
 }
 
 .category-list {
@@ -77,7 +77,6 @@
   align-items: flex-end;
 }
 
-
 .user-nickname {
   text-decoration: none;
   margin-right: 3vw;
@@ -89,6 +88,7 @@
 .logout {
   text-decoration: none;
   color: #333333;
+  margin-right: 18px;
 }
 
 .login {
@@ -101,4 +101,32 @@
 .sign-up {
   text-decoration: none;
   color: #333333;
+}
+
+.notice-lists {
+  z-index: 10;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 400px;
+  font-size: 14px;
+  background-color: white;
+  box-shadow: 0 6px 8px 1px lightgray, 0 2px 8px 1px lightgray, 0 4px 4px -3px lightgray;
+}
+
+.notice-index {
+  height: 40px;
+  padding-top: 10px;
+  text-align: center;
+  color: gray;
+  font-weight: bold;
+  border-bottom: 1px solid lightgray;
+}
+
+.notice-list {
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
 }
