@@ -9,18 +9,5 @@ FactoryBot.define do
     last_name_reading     { 'テスト' }
     first_name_reading    { 'シマス' }
     birthday              { '2020-01-01' }
-
-    trait :a do
-      id { 2 }
-      nickname              { Faker::Name.name }
-      email                 { Faker::Internet.free_email }
-      password              { 'boss1234' }
-      password_confirmation { password }
-      last_name             { '久くク' }
-      first_name            { '日ひヒ' }
-      last_name_reading     { 'テスト' }
-      first_name_reading    { 'シマス' }
-      birthday              { '2020-01-01' }
-    end
   end
 end

@@ -7,7 +7,7 @@ app/assets/stylesheets/items/new.css %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, local: true do |f| %>
+    <%= form_with model: @item, local: true , html: { id: "new_post" } do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -17,11 +17,12 @@ app/assets/stylesheets/items/new.css %>
         商品画像
         <span class="indispensable">必須</span>
       </div>
+      <div id="previews"></div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image", name: 'item[images][]', data: {index: 0} %>
       </div>
     </div>
     <%# /商品画像 %>

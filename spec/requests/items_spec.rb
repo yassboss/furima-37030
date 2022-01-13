@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Items', type: :request do
   before do
     @user = FactoryBot.create(:user)
-    @item = FactoryBot.create(:item, :a)
+    @item = FactoryBot.create(:item, :assoc)
   end
 
   describe 'GET #index' do
@@ -77,9 +77,9 @@ RSpec.describe 'Items', type: :request do
       expect(response.body).to include('コメント一覧')
     end
     it '出品者以外でログインしてshowアクションにリクエストするとレスポンスに購入ボタンが存在する' do
-      @item01 = FactoryBot.create(:item, :a)
+      @another_item = FactoryBot.create(:item, :assoc)
       sign_in @item.user
-      get item_path(@item01)
+      get item_path(@another_item)
       expect(response.body).to include('購入')
     end
     it '出品者でログインしてshowアクションにリクエストするとレスポンスに編集ボタンが存在する' do
@@ -125,7 +125,7 @@ RSpec.describe 'Items', type: :request do
       sign_in @user
       post items_path,
            params: { item: { item_name: 'test', description: 'test', category_id: 1, condition_id: 1, shipping_charge_id: 1,
-                             prefecture_id: 1, days_to_ship_id: 1, price: 2000, user_id: 1 } }
+                             prefecture_id: 1, days_to_ship_id: 1, price: 2000, user_id: @user.id } }
       expect(response.status).to eq(200)
     end
     it 'ログインしていない状態でcreateアクションにリクエストするとレスポンスにステータスコード302が返ってくる' do

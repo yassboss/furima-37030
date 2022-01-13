@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item)
-    @user = FactoryBot.build(:user)
+    @item = FactoryBot.build(:item, :assoc)
   end
 
   describe '商品出品の新規登録' do
@@ -18,69 +17,69 @@ RSpec.describe Item, type: :model do
     end
     context '出品登録できない場合' do
       it '商品画像が空では出品登録できない' do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include('Imageを入力してください')
+        expect(@item.errors.full_messages).to include('画像を入力してください')
       end
       it '商品名が空では出品登録できない' do
         @item.item_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item nameを入力してください')
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
       it '商品の説明が空では出品登録できない' do
         @item.description = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Descriptionを入力してください')
+        expect(@item.errors.full_messages).to include('商品の説明を入力してください')
       end
       it 'カテゴリー情報が空では出品登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Categorycan't be blank")
+        expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
       end
       it '商品の状態情報が空では出品登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Conditioncan't be blank")
+        expect(@item.errors.full_messages).to include('商品の状態を入力してください')
       end
       it '配送料の負担情報が空では出品登録できない' do
         @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping chargecan't be blank")
+        expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
       end
       it '発送元の地域情報が空では出品登録できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecturecan't be blank")
+        expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
       end
       it '発送までの日数情報が空では出品登録できない' do
         @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to shipcan't be blank")
+        expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
       end
       it '価格が空では出品登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Priceを入力してください')
+        expect(@item.errors.full_messages).to include('販売価格を入力してください')
       end
       it '価格が300〜9999999の範囲になければ出品登録できない(300未満)' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Priceは300以上の値にしてください')
+        expect(@item.errors.full_messages).to include('販売価格は300以上の値にしてください')
       end
       it '価格が300〜9999999の範囲になければ出品登録できない(10000000以上)' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Priceは9999999以下の値にしてください')
+        expect(@item.errors.full_messages).to include('販売価格は9999999以下の値にしてください')
       end
       it '価格が半角数値でなければ出品登録できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Priceは数値で入力してください')
+        expect(@item.errors.full_messages).to include('販売価格は数値で入力してください')
       end
       it '価格が小数を含むと出品登録できない' do
         @item.price = 300.3
         @item.valid?
-        expect(@item.errors.full_messages).to include('Priceは整数で入力してください')
+        expect(@item.errors.full_messages).to include('販売価格は整数で入力してください')
       end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
