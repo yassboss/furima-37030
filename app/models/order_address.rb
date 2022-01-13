@@ -7,8 +7,8 @@ class OrderAddress
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: VALID_POSTAL_CODE_REGEX, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :postal_code, format: { with: VALID_POSTAL_CODE_REGEX, message: 'は次のように入力してください(例: 123-4567)' }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'を入力してください' }
     validates :item_id, :user_id, :city, :house_number
     validates :phone_number,
               length: { in: 10..11, allow_blank: true },

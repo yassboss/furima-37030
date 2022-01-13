@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
   before do
-    @item = FactoryBot.build(:item, :a)
-    @comment = FactoryBot.build(:comment, :a)
+    @item = FactoryBot.create(:item, :assoc)
+    @comment = FactoryBot.build(:comment, :assoc)
   end
 
   describe 'コメント投稿の通知' do

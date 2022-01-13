@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Orders', type: :request do
   before do
-    @user = FactoryBot.create(:user, :a)
-    @user01 = FactoryBot.create(:user)
-    @item = FactoryBot.create(:item, :b)
+    @user = FactoryBot.create(:user)
+    @another_user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, user_id: @user.id)
   end
 
   describe 'GET #index' do
     it '出品者以外のユーザーでログインしてindexアクションにリクエストすると正常にレスポンスが返ってくる' do
-      sign_in @user01
+      sign_in @another_user
       get item_orders_path(@item)
       expect(response.status).to eq(200)
     end
@@ -35,7 +35,7 @@ RSpec.describe 'Orders', type: :request do
 
   describe 'POST #create' do
     it '出品者以外でログインしてcreateアクションにリクエストすると正常にレスポンスが返ってくる' do
-      sign_in @user01
+      sign_in @another_user
       post item_orders_path(@item),
            params: { order_address: { token: 'tok_abcdefghijk00000000000000000', postal_code: '123-4567', prefecture_id: 1, city: '札幌市',
                                       house_number: '123', building_name: 'ビル', phone_number: '000000000' } }

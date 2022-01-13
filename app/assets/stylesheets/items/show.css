@@ -33,6 +33,27 @@
   object-fit: contain;
 }
 
+.other-images {
+  display: flex;
+}
+
+.other-image {
+  margin-right: 10px;
+
+}
+
+.other-image img {
+  height: 120px;
+  width: 120px;
+  object-fit: contain;
+}
+
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
 .item-price-box {
   margin: 25px 0px;
   display: flex;
@@ -252,23 +273,4 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;
-}
-
-.other-images {
-  display: flex;
-}
-
-.other-image {
-  margin-right: 10px;
-}
-
-.image-delete-button {
-  text-align: center;
-  border: solid 1px;
-  cursor: pointer;
-}
-
-.main-image {
-  height: 200px;
-  width: 200px;
 }

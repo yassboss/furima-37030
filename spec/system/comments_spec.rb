@@ -2,10 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'コメント投稿', type: :system do
   before do
-    @user = FactoryBot.create(:user, :a)
-    @item = FactoryBot.create(:item, :b)
-    @item_a = FactoryBot.create(:item, :a)
-    @comment = FactoryBot.build(:comment)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, :assoc)
   end
   context 'コメントができるとき' do
     it 'ログインしたユーザーはコメントできる' do
@@ -15,17 +13,17 @@ RSpec.describe 'コメント投稿', type: :system do
       fill_in 'password', with: @user.password
       find('input[name="commit"]').click
       # 商品詳細ページに遷移する
-      visit item_path(@item_a)
+      visit item_path(@item)
       # コメントフォームが表示されていることを確認する
       expect(page).to have_content('コメントする')
       # フォームに情報を入力する
-      fill_in 'comment_text', with: @comment.text
+      fill_in 'comment_text', with: 'test_comment!'
       # 送信するとCommentモデルとNotificationモデルのカウントが1上がることを確認する
       expect do
         find('button[name="button"]').click
       end.to change { Comment.count }.by(1), change { Notification.count }.by(1)
       # 入力したコメントが表示されていることを確認する
-      expect(page).to have_content(@comment.text)
+      expect(page).to have_content('test_comment!')
     end
   end
   context 'コメントができないとき' do
@@ -40,20 +38,19 @@ end
 
 RSpec.describe 'コメント削除', type: :system do
   before do
-    @user = FactoryBot.create(:user, :a)
-    @item = FactoryBot.create(:item, :b)
-    @user01 = FactoryBot.create(:user)
-    @comment = FactoryBot.create(:comment)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, :assoc)
+    @comment = FactoryBot.create(:comment, :assoc_user, item_id: @item.id)
   end
   context 'コメントが削除できるとき' do
     it '出品者ユーザーはコメントを削除できる' do
       # ログインする
       visit new_user_session_path
-      fill_in 'email', with: @user.email
-      fill_in 'password', with: @user.password
+      fill_in 'email', with: @item.user.email
+      fill_in 'password', with: @item.user.password
       find('input[name="commit"]').click
       # 商品詳細ページに遷移する
-      visit item_path(@item)
+      visit item_path(@comment.item)
       # コメント削除ボタンが表示されていることを確認する
       expect(page).to have_selector('#comment-destroy')
       # 削除ボタンを押すとCommentモデルのカウントが1下がることを確認する
@@ -68,11 +65,11 @@ RSpec.describe 'コメント削除', type: :system do
     it '出品者ユーザー以外はコメントを削除できない' do
       # ログインする
       visit new_user_session_path
-      fill_in 'email', with: @user01.email
-      fill_in 'password', with: @user01.password
+      fill_in 'email', with: @user.email
+      fill_in 'password', with: @user.password
       find('input[name="commit"]').click
       # 商品詳細ページに遷移する
-      visit item_path(@item)
+      visit item_path(@comment.item)
       # コメント削除ボタンが表示されないことを確認する
       expect(page).to have_no_selector('#comment-destroy')
     end
