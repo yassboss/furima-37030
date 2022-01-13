@@ -44,6 +44,11 @@
   justify-content: space-around;
 }
 
+.other-image {
+  display: flex;
+  align-items: center;
+}
+
 .other-image img {
   width: 25vw;
   object-fit: contain;

@@ -5,25 +5,31 @@
     <h2 class="name">
       <%= @item.item_name %>
     </h2>
+    <% if @order %> <%# 売却済の場合 %>
     <div class="item-img-content">
       <div class="main-image" style="margin: 0 auto;">
         <%= image_tag @item.images[0] %>
       </div>
-      
-      <% if @order %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
+    </div>
+    <% else %> <%# 販売中の場合 %>
+    <div class="item-img-content">
+      <div class="main-image" style="margin: 0 auto;">
+        <%= image_tag @item.images[0] %>
+      </div>
+    </div>
+      <% if @item.images.length > 1 %> <%# 画像が複数ある場合 %>
+      <div class="other-images">
+        <% @item.images[0..-1].each do |image| %>
+          <div class="other-image" style="text-align: center;">
+            <%= link_to image_tag(image), image, :'data-lightbox' => "group" %>
+          </div>
+        <%end%>
+      </div>
       <% end %>
-      
-    </div>
-    <div class="other-images">
-      <% @item.images[1..-1].each do |image| %>
-        <div class="other-image" style="text-align: center;">
-          <%= image_tag image %>
-        </div>
-      <%end%>
-    </div>
+    <% end %>
     
     <div class="item-price-box">
       <span class="item-price">
