@@ -6,21 +6,25 @@
       <%= @item.item_name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @item.images[0] ,class:"main-image" %><br>
-      <div class="other-images">
-        <% @item.images[1..-1].each do |image| %>
-          <div class="other-image">
-            <%= image_tag image %>
-          </div>
-        <%end%>
+      <div class="main-image" style="margin: 0 auto;">
+        <%= image_tag @item.images[0] %>
       </div>
+      
       <% if @order %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
       <% end %>
-
+      
     </div>
+    <div class="other-images">
+      <% @item.images[1..-1].each do |image| %>
+        <div class="other-image" style="text-align: center;">
+          <%= image_tag image %>
+        </div>
+      <%end%>
+    </div>
+    
     <div class="item-price-box">
       <span class="item-price">
         ¥<%= @item.price %>

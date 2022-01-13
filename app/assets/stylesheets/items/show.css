@@ -11,9 +11,9 @@
 
 .item-box {
   background-color: #FFF;
-  width: 70vw;
-  min-width: 1200px;
-  padding: 10vh 15vw;
+  width: 85vw;
+  min-width: 200px;
+  padding: 10vh 10vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,23 +28,24 @@
 .main-image {
   height: 50vh;
   width: 60vw;
-  min-height: 500px;
+  min-height: 200px;
   background-color: rgb(205, 202, 202);
+}
+
+.main-image img {
+  height: 100%;
+  width: 100%;
   object-fit: contain;
 }
 
 .other-images {
   display: flex;
-}
-
-.other-image {
-  margin-right: 10px;
-
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .other-image img {
-  height: 120px;
-  width: 120px;
+  width: 25vw;
   object-fit: contain;
 }
 
