@@ -25,6 +25,9 @@
     <% comment = Comment.find_by(id: notification.comment_id) %>
     <%= comment.text %>
   </p>
+  <p style="text-align: right; font-size: 14px;">
+    <%= "#{(notification.checked)? "既読" : "未読"}" %>
+  </p>
   <p class="time-ago" style="text-align: right; font-size: 12px;">
     <%= time_ago_in_words(notification.created_at).upcase %>前
   </p>
