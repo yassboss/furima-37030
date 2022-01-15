@@ -13,9 +13,9 @@
     </span>さんが
     <span class="visited-item" style="font-weight: bold; color: #3ccace;">
       <% if notification.item.user_id == visited.id %>
-        <%= link_to "あなたの#{notification.item.item_name}", notification.item %>
+        <%= link_to "あなたの#{notification.item.item_name}", notification.item , style: "color: inherit;"%>
       <% else %>
-        <%= link_to item_path(notification.item) do %>
+        <%= link_to item_path(notification.item) , style: "color: inherit;" do %>
           <%= notification.item.user.nickname %>さんの<%= notification.item.item_name %>
         <% end %>
       <% end %>

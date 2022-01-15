@@ -22,5 +22,12 @@ document.addEventListener('DOMContentLoaded', function(){
         noticeLists.setAttribute("style", "display: block;")
       }
     })
+    document.addEventListener('click', (e)=> {
+      if(!e.target.closest('.nav')){
+        if (noticeLists.getAttribute("style") == "display: block;") {
+        noticeLists.removeAttribute("style", "display: block;")
+        }
+      }
+    })
   });
 });
